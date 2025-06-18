@@ -21,8 +21,8 @@ from app.views import home_view
 
 urlpatterns = [
     path('', home_view),
+    path('api/', include('app.urls')),  # This will make teas available at /api/teas/
     path('admin/', admin.site.urls),
-    path('', include('app.urls')),  # Removed 'api/' prefix since it's already in app/urls.py
     path('api/auth/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/auth/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]

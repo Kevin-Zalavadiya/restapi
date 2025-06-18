@@ -42,10 +42,19 @@ INSTALLED_APPS = [
     'app',
 ]
 
+from datetime import timedelta
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),  # Access token valid for 1 day
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),  # Refresh token valid for 7 days
+    'ROTATE_REFRESH_TOKENS': True,  # Generate new refresh token on refresh
+    'BLACKLIST_AFTER_ROTATION': True,  # Blacklist old refresh tokens
 }
 
 AUTH_USER_MODEL = 'app.CustomUser'
